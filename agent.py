@@ -111,8 +111,6 @@ async def check_cita() -> str:
                 "--disable-setuid-sandbox",
                 "--disable-dev-shm-usage",
                 "--disable-gpu",
-                "--single-process",
-                "--no-zygote",
                 "--disable-extensions",
                 "--disable-software-rasterizer",
                 "--disable-background-networking",
