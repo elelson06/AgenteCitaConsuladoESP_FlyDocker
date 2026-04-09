@@ -1,22 +1,10 @@
-# fly.toml — Configuración de la app en Fly.io
-# Reemplazá "agente-citas-espana" por el nombre que elegiste al crear la app
-
 app = "agente-citas-espana"
-primary_region = "mad"  # Madrid — más cerca del consulado, mejor latencia
+primary_region = "mad"
 
 [build]
-  # Fly.io usa el Dockerfile automáticamente
 
 [env]
   PYTHONUNBUFFERED = "1"
-
-# Sin HTTP server — es un worker puro, no necesita puerto
-# Fly.io lo mantiene corriendo igual
-
-[machines]
-  # Tamaño de la máquina virtual
-  # shared-cpu-1x con 512MB es suficiente para Chromium headless
-  size = "shared-cpu-1x"
 
 [[vm]]
   memory = "512mb"
