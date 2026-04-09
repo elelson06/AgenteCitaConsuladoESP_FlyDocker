@@ -1,9 +1,9 @@
 import requests
-from config import TELEGRAM_BOT_TOKEN, TELEGRAM_CHAT_ID
+from config import TELEGRAM_TOKEN, TELEGRAM_CHAT_ID
 
 
 def _base_url():
-    return f"https://api.telegram.org/bot{TELEGRAM_BOT_TOKEN}"
+    return f"https://api.telegram.org/bot{TELEGRAM_TOKEN}"
 
 
 def send_telegram(message):
