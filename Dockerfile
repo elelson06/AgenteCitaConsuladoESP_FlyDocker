@@ -23,4 +23,5 @@ COPY agent.py .
 COPY notifier.py .
 COPY config.py .
 
-CMD ["python", "agent.py"]
+# Aumentar /dev/shm para que Chromium no crashee
+CMD ["python", "-u", "agent.py"]
