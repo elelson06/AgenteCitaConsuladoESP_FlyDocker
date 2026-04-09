@@ -103,6 +103,7 @@ async def wait_for_content(page) -> bool:
 
 async def check_cita() -> str:
     async with async_playwright() as p:
+        print(f"[{_now()}] Lanzando Chromium...")
         browser = await p.chromium.launch(
             headless=True,
             args=[
@@ -112,8 +113,13 @@ async def check_cita() -> str:
                 "--disable-gpu",
                 "--single-process",
                 "--no-zygote",
+                "--disable-extensions",
+                "--disable-software-rasterizer",
+                "--disable-background-networking",
+                "--shm-size=256mb",
             ]
         )
+        print(f"[{_now()}] Chromium lanzado OK, creando contexto...")
         context = await browser.new_context(
             user_agent=(
                 "Mozilla/5.0 (Windows NT 10.0; Win64; x64) "
@@ -131,6 +137,7 @@ async def check_cita() -> str:
             await Stealth().apply_stealth_async(page)
 
         try:
+            print(f"[{_now()}] Browser iniciado OK")
             print(f"[{_now()}] Navegando al widget...")
             await page.goto(URL, wait_until="networkidle", timeout=60000)
             await asyncio.sleep(random.uniform(1.5, 3.0))
